@@ -13,8 +13,7 @@ You give it a broad topic (e.g. _"AI in healthcare"_). It runs a defined multi-s
 **Key concepts:** LangGraph, DAG-based workflows, state machines, conditional edges, and how enterprise orchestration tools (n8n, Prefect, Temporal) relate to what you're building.
 
 **Time estimate:** 1–2 days  
-**Stack:** Python, LangGraph, Groq  
-**No cost required.**
+**Stack:** Python, LangGraph, Groq
 
 ---
 
@@ -160,4 +159,3 @@ project3-workflow-agent/
 
 ## Learnings & Notes
 
-> _Write your reflections here as you build. What was confusing? What clicked? What would you do differently?_
