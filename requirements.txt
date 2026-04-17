@@ -1,0 +1,5 @@
+langgraph
+groq
+python-dotenv
+requests
+beautifulsoup4
