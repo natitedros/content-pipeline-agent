@@ -47,7 +47,7 @@ You give it a broad topic (e.g. _"AI in healthcare"_). It runs a defined multi-s
 ### Step 4 — Build the Summarize Node
 
 - Write a `summarize_node(state: PipelineState) -> PipelineState` function
-- Call Gemini to compress `state["research_results"]` into a clean 3–5 paragraph summary
+- Call Groq to compress `state["research_results"]` into a clean 3–5 paragraph summary
 - Store in `state["summary"]`
 - Also ask the model to rate the quality of the research from 1–10 and store in `state["quality_score"]`
 - **Goal:** Nodes can call LLMs, run code, call APIs — they are just functions
@@ -63,7 +63,7 @@ You give it a broad topic (e.g. _"AI in healthcare"_). It runs a defined multi-s
 ### Step 6 — Build the Report Generation Node
 
 - Write a `report_node(state: PipelineState) -> PipelineState` function
-- Call Gemini with the summary and ask it to generate a structured markdown report with sections: Introduction, Key Findings, Implications, and Further Reading
+- Call Groq with the summary and ask it to generate a structured markdown report with sections: Introduction, Key Findings, Implications, and Further Reading
 - Store the result in `state["report"]`
 - **Goal:** See how a node can do complex formatting, not just raw data retrieval
 
@@ -158,4 +158,3 @@ project3-workflow-agent/
 ---
 
 ## Learnings & Notes
-
