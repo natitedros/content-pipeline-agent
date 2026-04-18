@@ -8,14 +8,14 @@ An automated research-to-report pipeline built with **LangGraph** and **Groq**. 
 
 This project is a hands-on introduction to **workflow orchestration** — the same concepts behind enterprise tools like n8n, Prefect, and Temporal, implemented from scratch.
 
-| Concept | What it means here |
-|---|---|
-| **Nodes** | Plain Python functions that read state and return updates |
-| **Edges** | Rules for which node runs next |
-| **Conditional edges** | Branches that route based on runtime state (the quality retry loop) |
-| **Shared state** | A `TypedDict` every node reads from and writes to — the "memory" of the workflow |
-| **Sink node** | The terminal node that writes output to the world (`save_node`) |
-| **DAG** | The compiled graph — defined once, run many times |
+| Concept               | What it means here                                                               |
+| --------------------- | -------------------------------------------------------------------------------- |
+| **Nodes**             | Plain Python functions that read state and return updates                        |
+| **Edges**             | Rules for which node runs next                                                   |
+| **Conditional edges** | Branches that route based on runtime state (the quality retry loop)              |
+| **Shared state**      | A `TypedDict` every node reads from and writes to — the "memory" of the workflow |
+| **Sink node**         | The terminal node that writes output to the world (`save_node`)                  |
+| **DAG**               | The compiled graph — defined once, run many times                                |
 
 ---
 
@@ -41,7 +41,7 @@ This project is a hands-on introduction to **workflow orchestration** — the sa
 [END]
 ```
 
-![Workflow Graph](assets/graph.png)
+<img src="assets/graph.png" alt="graph" width="200"/>
 
 ---
 
@@ -65,6 +65,7 @@ content-pipeline-agent/
 ## Setup
 
 **1. Create and activate a virtual environment:**
+
 ```bash
 python -m venv .venv
 .venv/Scripts/activate    # Windows
@@ -72,15 +73,18 @@ source .venv/bin/activate # macOS/Linux
 ```
 
 **2. Install dependencies:**
+
 ```bash
 pip install -r requirements.txt
 ```
 
 **3. Configure your API key:**
+
 ```bash
 cp .env.example .env
 # Open .env and set GROQ_API_KEY=your_key_here
 ```
+
 Get a free key at [console.groq.com/keys](https://console.groq.com/keys).
 
 ---
@@ -88,6 +92,7 @@ Get a free key at [console.groq.com/keys](https://console.groq.com/keys).
 ## Usage
 
 **Run the pipeline on a topic:**
+
 ```bash
 python agent.py "AI in healthcare"
 python agent.py "climate change adaptation strategies"
@@ -95,12 +100,15 @@ python agent.py "quantum computing for finance"
 ```
 
 **Print the Mermaid graph diagram:**
+
 ```bash
 python agent.py --visualize
 ```
+
 Paste the output into [mermaid.live](https://mermaid.live) to see your workflow rendered visually.
 
 **Example CLI output:**
+
 ```
 > Researching: AI in healthcare
   Found 5 results.
@@ -113,6 +121,7 @@ Done. Quality: 8, Retries: 0
 ```
 
 If the quality score is below 6, the pipeline retries with a refined query (up to 2 retries):
+
 ```
 > Researching: narrow topic
   Found 5 results.
@@ -193,10 +202,10 @@ app = graph.compile()        # freeze into a runnable DAG
 
 ## Real-World Equivalents
 
-| This project | Production equivalent |
-|---|---|
+| This project       | Production equivalent                              |
+| ------------------ | -------------------------------------------------- |
 | `StateGraph` nodes | Steps in n8n / Prefect tasks / Temporal activities |
-| Conditional edges | If/else branches in workflow tools |
-| Shared state dict | Message bus / workflow context object |
-| `graph.compile()` | A deployed workflow / scheduled DAG |
-| `save_node` | Webhook sink / database write / email delivery |
+| Conditional edges  | If/else branches in workflow tools                 |
+| Shared state dict  | Message bus / workflow context object              |
+| `graph.compile()`  | A deployed workflow / scheduled DAG                |
+| `save_node`        | Webhook sink / database write / email delivery     |
